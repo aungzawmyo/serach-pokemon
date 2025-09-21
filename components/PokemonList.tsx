@@ -79,8 +79,8 @@ export default function PokemonList({ staticData = [] }: PokemonListProps) {
         <div className="w-full max-w-md">
             <div className="flex flex-row gap-4 mb-2">
                 <div className="flex-1">
-                    <label htmlFor="searchName" className="block text-sm font-medium mb-1">
-                        Search by Name:
+                    <label htmlFor="searchName" className="block text-sm text-gray-700 font-medium mb-1">
+                        Search by Name
                     </label>
                     <input
                         id="searchName"
@@ -97,7 +97,7 @@ export default function PokemonList({ staticData = [] }: PokemonListProps) {
                         <button
                             onClick={handleSearch}
                             disabled={!searchName.trim()}
-                            className="px-4 py-2 bg-blue-500 text-white flex flex-row items-center rounded hover:bg-blue-600 disabled:opacity-50"
+                            className="px-4 py-2 bg-blue-500 text-white flex flex-row items-center rounded hover:bg-blue-600 hover:cursor-pointer"
                         >
                            <Search className="mr-2"/> Search
                         </button>

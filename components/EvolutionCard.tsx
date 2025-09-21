@@ -14,7 +14,7 @@ export default function EvolutionCard({ evolution, onClick }: EvolutionCardProps
 
   return (
     <div 
-      className="border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+      className="border border-gray-400 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
       onClick={handleClick}
     >
       <div className="text-center">
@@ -23,7 +23,7 @@ export default function EvolutionCard({ evolution, onClick }: EvolutionCardProps
         <img 
           src={evolution.image} 
           alt={evolution.name} 
-          className="mx-auto mt-2 mb-3 max-w-full h-auto"
+          className="mx-auto mt-2 mb-3 max-w-full h-auto hover:scale-110  transition-transform duration-500"
            
         />
         {evolution.classification && (

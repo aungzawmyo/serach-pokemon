@@ -11,7 +11,7 @@ import { Pokemon } from "@/types/pokemon";
   } catch (error) {
     console.error("Failed to load static Pokemon data:", error);
   }
-   
+  //  console.log("env __",process.env.GRAPHQL_ENDPOINT);
   return (
     <div className="min-h-screen bg-gray-100">
       

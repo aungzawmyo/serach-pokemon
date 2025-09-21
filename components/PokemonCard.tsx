@@ -43,13 +43,13 @@ export default function PokemonCard({ pokemon, onClick }: PokemonCardProps) {
       onClick={handleClick}
     >
       <div className="text-center">
-        
+
         {/* Pokemon Image */}
         <div className="mb-3">
           <img 
             src={pokemon.image} 
             alt={pokemon.name} 
-            className="mx-auto object-contain w-24 h-24"
+            className="mx-auto object-contain w-24 h-24 hover:scale-120  transition-transform duration-500"
           />
         </div>
         
@@ -60,7 +60,7 @@ export default function PokemonCard({ pokemon, onClick }: PokemonCardProps) {
         
         {/* Pokemon Name */}
         <h3 className="font-bold text-sm text-gray-900 mb-3">
-          {pokemon.name} ({pokemon.classification})
+          {pokemon.name}{pokemon.classification ? ` (${pokemon.classification})` : ''}
         </h3>
         
         {/* Type Badges */}

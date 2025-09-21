@@ -1,7 +1,7 @@
 // Static data fetching service for Pokemon
 import { Pokemon, PokemonsData } from "../types/pokemon";
 
-const GRAPHQL_ENDPOINT = process.env.GRAPHQL_ENDPOINT || "";
+const GRAPHQL_ENDPOINT = process.env.GRAPHQL_ENDPOINT || "https://graphql-pokemon2.vercel.app";
 
 // Server-side GraphQL fetch function
 async function fetchGraphQL(query: string, variables?: any) {
@@ -67,8 +67,12 @@ export async function getStaticPokemonByName(name: string): Promise<Pokemon | nu
       number
       name
       classification
-      types 
-      maxCP 
+      types
+      resistant
+      weaknesses
+      fleeRate
+      maxCP
+      maxHP
       image
       evolutions {
         id
@@ -77,8 +81,8 @@ export async function getStaticPokemonByName(name: string): Promise<Pokemon | nu
       }
     }
 
-    query pokemon($id: String, $name: String) {
-      pokemon(id: $id, name: $name) {
+    query pokemon($name: String) {
+      pokemon(name: $name) {
         id
         number
         name
@@ -115,8 +119,12 @@ export async function getStaticPokemonByName(name: string): Promise<Pokemon | nu
           number
           name
           classification
-          types 
-          maxCP 
+          types
+          resistant
+          weaknesses
+          fleeRate
+          maxCP
+          maxHP
           image
           evolutions {
             ...RecursivePokemonFragment

@@ -12,33 +12,9 @@ import { Suspense } from 'react';
 
 const GET_POKEMON_BY_NAME = gql`
   fragment RecursivePokemonFragment on Pokemon {
-    id
-    number
-    name
-    classification
-    types 
-    maxCP 
-    image
-    evolutions {
-      id
-      name
-      number
-    }
-  }
-
-  query pokemon($id: String, $name: String) {
-    pokemon(id: $id, name: $name) {
       id
       number
       name
-      weight {
-        minimum
-        maximum
-      }
-      height {
-        minimum
-        maximum
-      }
       classification
       types
       resistant
@@ -47,32 +23,64 @@ const GET_POKEMON_BY_NAME = gql`
       maxCP
       maxHP
       image
-      attacks {
-        fast {
-          name
-          type
-          damage
-        }
-        special {
-          name
-          type
-          damage
-        }
-      }
       evolutions {
+        id
+        name
+        number
+      }
+    }
+
+    query pokemon($name: String) {
+      pokemon(name: $name) {
         id
         number
         name
+        weight {
+          minimum
+          maximum
+        }
+        height {
+          minimum
+          maximum
+        }
         classification
-        types 
-        maxCP 
+        types
+        resistant
+        weaknesses
+        fleeRate
+        maxCP
+        maxHP
         image
+        attacks {
+          fast {
+            name
+            type
+            damage
+          }
+          special {
+            name
+            type
+            damage
+          }
+        }
         evolutions {
-          ...RecursivePokemonFragment
+          id
+          number
+          name
+          classification
+          types
+          resistant
+          weaknesses
+          fleeRate
+          maxCP
+          maxHP
+          image
+          evolutions {
+            ...RecursivePokemonFragment
+          }
         }
       }
     }
-  }
 `;
 
 export default function PokemonDetail() {
@@ -187,7 +195,7 @@ function PokemonDetailContent() {
                     <img 
                         src={pokemon.image} 
                         alt={pokemon.name} 
-                        className="mx-auto mb-4 max-w-full h-auto   rounded-lg "
+                        className="mx-auto mb-4 max-w-full h-auto   rounded-lg hover:scale-110  transition-transform duration-500"
                         style={{ maxHeight: "300px" }}
                     />
                     
